@@ -12,14 +12,14 @@ import Header from './components/Header/Header';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 // Context Api 
-export const UserContext = createContext();  
+export const UserContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
-    <p>Name: {loggedInUser.name}</p>
-    <p>E-mail: {loggedInUser.email}</p>
+      <p>Name: {loggedInUser.name}</p>
+      <p>E-mail: {loggedInUser.email}</p>
       <Router>
         <Header />
         <Switch>

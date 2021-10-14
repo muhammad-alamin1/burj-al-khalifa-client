@@ -19,35 +19,35 @@ const Book = () => {
     const { bedType } = useParams();
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
-    const [selectedDate, setSelectedDate] =useState({
+    const [selectedDate, setSelectedDate] = useState({
         checkIn: new Date(),
         checkOut: new Date()
     });
 
     const handleCheckInDate = (date) => {
-        const newDate = {...selectedDate}
-        newDate.checkIn= date;
+        const newDate = { ...selectedDate }
+        newDate.checkIn = date;
         setSelectedDate(newDate);
     };
     const handleCheckOutDate = (date) => {
-        const newDate = {...selectedDate}
+        const newDate = { ...selectedDate }
         newDate.checkOut = date;
         setSelectedDate(newDate);
     }
     const handleBooking = () => {
-        const newBooking = {...loggedInUser , ...selectedDate};
-        fetch('http://localhost:5000/addBooking',{
+        const newBooking = { ...loggedInUser, ...selectedDate };
+        fetch('http://localhost:5000/addBooking', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newBooking)
         })
-        .then(response =>response.json())
-        .then(data =>{
-            console.log(data);
-        })
-        .catch(err =>{
-            console.log(err);
-        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(err => {
+                console.log(err);
+            })
 
 
     }
@@ -87,7 +87,7 @@ const Book = () => {
                     Book Now
                 </Button>
             </MuiPickersUtilsProvider>
-            <Bookings/>
+            <Bookings />
         </div>
     );
 };

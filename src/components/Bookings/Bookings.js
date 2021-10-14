@@ -10,7 +10,7 @@ const Bookings = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     useEffect(() => {
-        fetch('http://localhost:5000/bookings?email=' + loggedInUser.email,{
+        fetch('http://localhost:5000/bookings?email=' + loggedInUser.email, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -19,15 +19,15 @@ const Bookings = () => {
 
         })
             .then(response => response.json())
-            .then(data =>{
+            .then(data => {
                 setBookings(data)
             })
-    },[])
+    }, [])
     return (
         <div>
             <h3>You have: {bookings.length} bookings</h3>
             {
-                bookings.map(book=><li key={book._id}>Name: {book.name} From: {book.checkIn} to: {book.checkOut}</li>)
+                bookings.map(book => <li key={book._id}>Name: {book.name} From: {book.checkIn} to: {book.checkOut}</li>)
             }
         </div>
     );
